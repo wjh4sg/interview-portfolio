@@ -1,92 +1,71 @@
-export const siteConfig = {
-  name: "Ryan Fitzgerald",
-  title: "Senior Software Engineer",
-  description: "Portfolio website of Ryan Fitzgerald",
-  accentColor: "#1d4ed8",
-  social: {
-    email: "your-email@example.com",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    twitter: "https://x.com/rfitzio",
-    github: "https://github.com/RyanFitzgerald",
-  },
-  aboutMe:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
-  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
+export type PortfolioProject = {
+  name: string;
+  eyebrow: string;
+  summary: string;
+  release: string;
+  repoUrl: string;
+  releaseUrl: string;
+  architecture: string;
+  architectureAlt: string;
+  status: string;
+  demoUrl?: string;
+  highlights: string[];
+  tags: string[];
+};
+
+export const siteConfig: {
+  name: string;
+  title: string;
+  description: string;
+  github: string;
+  resume: string;
+  projects: PortfolioProject[];
+} = {
+  name: "WJH",
+  title: "AI 应用开发 / 后端开发",
+  description:
+    "WJH 的 AI 应用开发作品集，聚焦 Agent 工程、RAG 检索增强生成与可靠的后端实现。",
+  github: "https://github.com/wjh4sg",
+  resume: "/resume.pdf",
   projects: [
     {
-      name: "AI Dev Roundup Newsletter",
-      description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
-      link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-    },
-    {
-      name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
-      description:
-        "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-      link: "https://fullstackextensions.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-    },
-    {
-      name: "ExtensionKit",
-      description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-    },
-  ],
-  experience: [
-    {
-      company: "Tech Company",
-      title: "Senior Software Engineer",
-      dateRange: "Jan 2022 - Present",
-      bullets: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Reduced API response times by 40% through optimization",
-        "Mentored team of 5 junior developers",
+      name: "MiniCode",
+      eyebrow: "Agent Engineering · CLI Coding Agent",
+      summary:
+        "一个受控的本地 CLI Coding Agent MVP。围绕工具调用、安全边界、上下文压缩与可追踪执行链，验证 Agent 从“会回答”到“能可靠行动”的工程路径。",
+      release: "v0.2.1",
+      repoUrl: "https://github.com/wjh4sg/Mini-Code",
+      releaseUrl: "https://github.com/wjh4sg/Mini-Code/releases/tag/v0.2.1",
+      architecture: "/images/minicode-architecture.svg",
+      architectureAlt: "MiniCode Agent 工具调用与安全执行架构图",
+      status: "演示视频即将上线",
+      highlights: [
+        "Skill 路由与只读工具调用",
+        "工作区隔离及敏感路径保护",
+        "上下文压缩、执行轨迹与记忆",
+        "OpenAI-compatible API 与 Mock fallback",
       ],
+      tags: ["Python", "Agent", "Tool Calling", "CLI", "Safety"],
     },
     {
-      company: "Startup Inc",
-      title: "Full Stack Developer",
-      dateRange: "Jun 2020 - Dec 2021",
-      bullets: [
-        "Built and launched MVP product from scratch using React and Node.js",
-        "Implemented CI/CD pipeline reducing deployment time by 60%",
-        "Collaborated with product team to define technical requirements",
+      name: "Personal RAG",
+      eyebrow: "RAG Engineering · Knowledge Base",
+      summary:
+        "一个面向个人文档的本地混合检索知识库。支持多格式摄取、向量与 BM25 融合、可定位引用和离线评测，把 RAG 的效果变成可检查的工程指标。",
+      release: "v0.1.2",
+      repoUrl: "https://github.com/wjh4sg/personal-rag-knowledge-base",
+      releaseUrl:
+        "https://github.com/wjh4sg/personal-rag-knowledge-base/releases/tag/v0.1.2",
+      architecture: "/images/rag-architecture.svg",
+      architectureAlt: "Personal RAG 文档摄取、混合检索与生成评测架构图",
+      status: "在线 Demo 即将上线",
+      highlights: [
+        "Markdown / TXT / PDF 文档摄取",
+        "Chroma + Jieba BM25 混合检索",
+        "RRF 融合、引用定位与增量索引",
+        "Hit@K / MRR 离线评测与 CI",
       ],
-    },
-    {
-      company: "Digital Agency",
-      title: "Frontend Developer",
-      dateRange: "Aug 2018 - May 2020",
-      bullets: [
-        "Developed responsive web applications for 20+ clients",
-        "Improved site performance scores by 35% on average",
-        "Introduced modern JavaScript frameworks to legacy codebases",
-      ],
-    },
-  ],
-  education: [
-    {
-      school: "University Name",
-      degree: "Bachelor of Science in Computer Science",
-      dateRange: "2014 - 2018",
-      achievements: [
-        "Graduated Magna Cum Laude with 3.8 GPA",
-        "Dean's List all semesters",
-        "President of Computer Science Club",
-      ],
-    },
-    {
-      school: "Online Platform",
-      degree: "Full Stack Development Certificate",
-      dateRange: "2019",
-      achievements: [
-        "Completed 500+ hours of coursework",
-        "Built 10+ portfolio projects",
-        "Specialized in React and Node.js",
-      ],
+      tags: ["Python", "RAG", "Chroma", "BM25", "Evaluation"],
     },
   ],
 };

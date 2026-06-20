@@ -2,39 +2,61 @@
 import { siteConfig } from "../config";
 ---
 
-<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
+<section class="section shell" id="capabilities">
+  <div class="section-heading">
+    <p class="eyebrow">ENGINEERING CAPABILITIES</p>
+    <h2>不止接通 API，更关注系统是否可靠。</h2>
+  </div>
+
+  <div class="capability-grid">
+    <article>
+      <p>01 / AGENT</p>
+      <h3>受控行动</h3>
+      <span>Tool Calling · Skill Routing · Safety Boundary · Context</span>
+    </article>
+    <article>
+      <p>02 / RAG</p>
+      <h3>可证检索</h3>
+      <span>Hybrid Search · RRF · Citation · Evaluation · Indexing</span>
+    </article>
+    <article>
+      <p>03 / BACKEND</p>
+      <h3>工程交付</h3>
+      <span>Python · API Integration · Testing · CI · Docker · Linux</span>
+    </article>
+  </div>
+</section>
+
+<section class="about shell" id="about">
   <div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-      <div class="lg:col-span-4">
-        <h2
-          class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
-        >
-          About Me
-        </h2>
-        <div
-          class="w-[75px] h-[5px] mt-2 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
-        >
-        </div>
-      </div>
-
-      <div class="lg:col-span-8 space-y-8">
-        <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
-          {siteConfig.aboutMe}
-        </p>
-
-        <div class="pt-4">
-          <div class="flex flex-wrap gap-3">
-            {
-              siteConfig.skills.map((skill) => (
-                <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200">
-                  {skill}
-                </span>
-              ))
-            }
-          </div>
-        </div>
-      </div>
+    <p class="eyebrow">ABOUT / CONTACT</p>
+    <h2>希望参与真正进入业务流程的 AI 应用。</h2>
+  </div>
+  <div class="about-copy">
+    <p>
+      我更在意模型之外的部分：数据怎样进入系统、工具怎样被安全调用、结果怎样引用证据，以及效果怎样被持续评测。
+      目前寻找 AI 应用开发或后端开发方向的机会。
+    </p>
+    <div>
+      <a
+        class="button button-primary"
+        href={siteConfig.github}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub 联系
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M7 17 17 7M8 7h9v9"></path>
+        </svg>
+      </a>
+      <a
+        class="button button-secondary"
+        href={siteConfig.resume}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        查看完整简历
+      </a>
     </div>
   </div>
 </section>

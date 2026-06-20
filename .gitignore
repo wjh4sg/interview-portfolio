@@ -11,6 +11,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.stdout.log
+*.stderr.log
+
+# local browser verification output
+screenshots/
 
 
 # environment variables

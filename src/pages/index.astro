@@ -1,39 +1,40 @@
 ---
+import About from "../components/About.astro";
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
 import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
-import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
+
+const canonicalUrl = "https://wjhdev.cloud";
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={siteConfig.description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <title>{siteConfig.name} - {siteConfig.title}</title>
+    <meta name="theme-color" content="#08090b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content={`${siteConfig.name}｜${siteConfig.title}`} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <title>{siteConfig.name}｜{siteConfig.title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#projects">跳到主要内容</a>
     <Header />
-    <section>
+    <main>
       <Hero />
-      <About />
       <Projects />
-      <Experience />
-      <Education />
-    </section>
+      <About />
+    </main>
     <Footer />
   </body>
 </html>
