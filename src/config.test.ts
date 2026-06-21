@@ -5,9 +5,8 @@ import { resolve } from "node:path";
 import { siteConfig } from "./config";
 
 describe("portfolio content contract", () => {
-  it("presents WJH for AI application and backend roles", () => {
+  it("presents WJH portfolio basics", () => {
     expect(siteConfig.name).toBe("WJH");
-    expect(siteConfig.title).toBe("AI 应用开发 / 后端开发");
     expect(siteConfig.github).toBe("https://github.com/wjh4sg");
     expect(siteConfig.resume).toBe("/resume.pdf");
   });
@@ -22,23 +21,35 @@ describe("portfolio content contract", () => {
     ]);
   });
 
-  it("marks demos as upcoming instead of exposing dead links", () => {
-    for (const project of siteConfig.projects) {
-      expect(project.demoUrl).toBeUndefined();
-      expect(project.status).toContain("即将上线");
-    }
+  it("links each project to its public demo video", () => {
+    expect(
+      siteConfig.projects.map(({ name, videoUrl }) => ({ name, videoUrl })),
+    ).toEqual([
+      {
+        name: "MiniCode",
+        videoUrl: "https://www.bilibili.com/video/BV1gijt6gErr",
+      },
+      {
+        name: "Personal RAG",
+        videoUrl: "https://www.bilibili.com/video/BV18Ejb6rESu",
+      },
+    ]);
   });
 
-  it("ships verifiable resume, architecture, and attribution assets", async () => {
+  it("renders demo video actions without outdated upcoming statuses", async () => {
+    const projects = await readFile(
+      resolve("src/components/Projects.astro"),
+      "utf8",
+    );
+
+    expect(projects).toContain("project.videoUrl");
+    expect(projects).toContain("演示视频");
+    expect(projects).not.toContain("coming-soon");
+  });
+
+  it("ships verifiable resume and attribution assets", async () => {
     const resume = await readFile(resolve("public/resume.pdf"));
     expect(resume.subarray(0, 4).toString()).toBe("%PDF");
-
-    for (const asset of [
-      "public/images/minicode-architecture.svg",
-      "public/images/rag-architecture.svg",
-    ]) {
-      expect(await readFile(resolve(asset), "utf8")).toMatch(/<svg[\s>]/);
-    }
 
     expect(await readFile(resolve("NOTICE.md"), "utf8")).toContain(
       "RyanFitzgerald/devportfolio",

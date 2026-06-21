@@ -5,24 +5,20 @@ export type PortfolioProject = {
   release: string;
   repoUrl: string;
   releaseUrl: string;
-  architecture: string;
-  architectureAlt: string;
-  status: string;
   demoUrl?: string;
+  videoUrl?: string;
   highlights: string[];
   tags: string[];
 };
 
 export const siteConfig: {
   name: string;
-  title: string;
   description: string;
   github: string;
   resume: string;
   projects: PortfolioProject[];
 } = {
   name: "WJH",
-  title: "AI 应用开发 / 后端开发",
   description:
     "WJH 的 AI 应用开发作品集，聚焦 Agent 工程、RAG 检索增强生成与可靠的后端实现。",
   github: "https://github.com/wjh4sg",
@@ -36,9 +32,7 @@ export const siteConfig: {
       release: "v0.2.1",
       repoUrl: "https://github.com/wjh4sg/Mini-Code",
       releaseUrl: "https://github.com/wjh4sg/Mini-Code/releases/tag/v0.2.1",
-      architecture: "/images/minicode-architecture.svg",
-      architectureAlt: "MiniCode Agent 工具调用与安全执行架构图",
-      status: "演示视频即将上线",
+      videoUrl: "https://www.bilibili.com/video/BV1gijt6gErr",
       highlights: [
         "Skill 路由与只读工具调用",
         "工作区隔离及敏感路径保护",
@@ -56,9 +50,7 @@ export const siteConfig: {
       repoUrl: "https://github.com/wjh4sg/personal-rag-knowledge-base",
       releaseUrl:
         "https://github.com/wjh4sg/personal-rag-knowledge-base/releases/tag/v0.1.2",
-      architecture: "/images/rag-architecture.svg",
-      architectureAlt: "Personal RAG 文档摄取、混合检索与生成评测架构图",
-      status: "在线 Demo 即将上线",
+      videoUrl: "https://www.bilibili.com/video/BV18Ejb6rESu",
       highlights: [
         "Markdown / TXT / PDF 文档摄取",
         "Chroma + Jieba BM25 混合检索",

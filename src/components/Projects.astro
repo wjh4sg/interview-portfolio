@@ -6,7 +6,7 @@ import { siteConfig } from "../config";
   <div class="section-heading">
     <p class="eyebrow">SELECTED WORK</p>
     <h2>两个项目，两条 AI 工程主线。</h2>
-    <p>代码、版本和架构均可公开检查。每个项目都围绕真实工程问题设计，而不只是模型调用演示。</p>
+    <p>代码和版本均可公开检查。每个项目都围绕真实工程问题设计，而不只是模型调用演示。</p>
   </div>
 
   <div class="project-list">
@@ -58,21 +58,23 @@ import { siteConfig } from "../config";
                   <path d="M7 17 17 7M8 7h9v9"></path>
                 </svg>
               </a>
-              <span class="coming-soon">
-                <span aria-hidden="true"></span>
-                {project.status}
-              </span>
+              {
+                project.videoUrl && (
+                  <a
+                    class="button button-secondary"
+                    href={project.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    演示视频
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                      <path d="m8 5 11 7-11 7V5z"></path>
+                    </svg>
+                  </a>
+                )
+              }
             </div>
           </div>
-
-          <figure class="architecture">
-            <img
-              src={project.architecture}
-              alt={project.architectureAlt}
-              loading="eager"
-            />
-            <figcaption>ARCHITECTURE / {project.release}</figcaption>
-          </figure>
         </article>
       ))
     }
