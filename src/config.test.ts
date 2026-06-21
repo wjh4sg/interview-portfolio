@@ -87,4 +87,15 @@ describe("portfolio content contract", () => {
       nginx.indexOf("if ($host = wjhdev.cloud)"),
     );
   });
+
+  it("uses portfolio-specific Nginx log names", async () => {
+    const nginx = await readFile(
+      resolve("deploy/nginx-wjhdev.cloud.conf"),
+      "utf8",
+    );
+
+    expect(nginx).toContain("wjh_portfolio_access.log");
+    expect(nginx).toContain("wjh_portfolio_error.log");
+    expect(nginx).not.toContain("sub2api");
+  });
 });

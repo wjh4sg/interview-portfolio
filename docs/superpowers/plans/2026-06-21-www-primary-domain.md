@@ -137,7 +137,7 @@ git commit -m "feat: make www the primary portfolio domain"
 
 **Files:**
 - Production output: `dist/`
-- Server config: `/www/server/panel/vhost/nginx/sub2api.conf`
+- Server config: `/www/server/panel/vhost/nginx/wjhdev.cloud.conf`
 - Server releases: `/var/www/wjh-portfolio/releases/<timestamp>/`
 
 - [ ] **Step 1: Push and require CI success**
@@ -163,7 +163,7 @@ Create `dist` archive, upload it and
 Back up:
 
 ```text
-/www/server/panel/vhost/nginx/sub2api.conf.backup-<timestamp>
+/www/server/panel/vhost/nginx/wjhdev.cloud.conf.backup-<timestamp>
 ```
 
 Install the candidate configuration, run:

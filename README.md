@@ -53,7 +53,7 @@ sudo systemctl reload nginx
 配置保留 `/api/wechat/` 与 `/ordering-api/` 两个既有反向代理路由。
 
 回滚时将 `current` 重新指向上一个版本；若同时修改过 Nginx，则恢复对应的
-`sub2api.conf.backup-<timestamp>`，通过 `nginx -t` 后 reload。
+`wjhdev.cloud.conf.backup-<timestamp>`，通过 `nginx -t` 后 reload。
 
 ## 许可与来源
 

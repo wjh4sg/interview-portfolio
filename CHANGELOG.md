@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [0.1.2] - 2026-06-21
+
+### Changed
+
+- Renamed production Nginx configuration and logs for the portfolio.
+- Removed legacy Sub2API deployment references from active infrastructure
+  documentation.
+
 ## [0.1.1] - 2026-06-21
 
 ### Changed
