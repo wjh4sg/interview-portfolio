@@ -33,7 +33,7 @@ npm run build
 
 ## 部署
 
-线上地址：[wjhdev.cloud](https://wjhdev.cloud)
+线上地址：[www.wjhdev.cloud](https://www.wjhdev.cloud)
 
 服务器使用不可变版本目录：
 
