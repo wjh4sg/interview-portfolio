@@ -8,6 +8,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "test": "vitest run",
+    "deploy:pages": "npm run build && wrangler pages deploy dist --project-name interview-portfolio-pages --branch main",
     "astro": "astro"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "@astrojs/check": "^0.9.9",
     "playwright": "^1.61.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.9",
+    "wrangler": "4.103.0"
   }
 }

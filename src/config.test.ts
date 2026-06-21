@@ -133,4 +133,17 @@ describe("portfolio content contract", () => {
     expect(readme).toContain("deploy/reload-nginx.sh");
     expect(readme).toContain("sudo nginx -t");
   });
+
+  it("provides a domain-safe Cloudflare Pages deploy command", async () => {
+    const packageJson = JSON.parse(
+      await readFile(resolve("package.json"), "utf8"),
+    );
+    const deployCommand = packageJson.scripts["deploy:pages"];
+
+    expect(packageJson.devDependencies.wrangler).toBe("4.103.0");
+    expect(deployCommand).toBe(
+      "npm run build && wrangler pages deploy dist --project-name interview-portfolio-pages --branch main",
+    );
+    expect(deployCommand).not.toMatch(/--domain|--route|wjhdev\.cloud/);
+  });
 });
