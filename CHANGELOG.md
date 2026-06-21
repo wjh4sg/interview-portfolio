@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here.
 
+## [0.1.4] - 2026-06-21
+
+### Changed
+
+- Migrated production deployment from BaoTa-managed Nginx to the system Nginx
+  package.
+- Added system Nginx and Certbot reload hook deployment templates.
+- Updated production logs to use `/var/log/nginx/` instead of BaoTa paths.
+
 ## [0.1.3] - 2026-06-21
 
 ### Changed

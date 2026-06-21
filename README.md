@@ -42,11 +42,13 @@ npm run build
 /var/www/wjh-portfolio/current
 ```
 
-Nginx 配置模板位于 `deploy/nginx-wjhdev.cloud.conf`。更新时将新的 `dist/`
-上传到新版本目录，验证文件后再原子切换 `current` 软链，并依次执行：
+系统 Nginx 主配置模板位于 `deploy/nginx.conf`，站点配置模板位于
+`deploy/nginx-wjhdev.cloud.conf`，Certbot 续期 reload hook 位于
+`deploy/reload-nginx.sh`。更新时将新的 `dist/` 上传到新版本目录，验证文件后再
+原子切换 `current` 软链，并依次执行：
 
 ```bash
-sudo /www/server/nginx/sbin/nginx -t
+sudo nginx -t
 sudo systemctl reload nginx
 ```
 

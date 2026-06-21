@@ -94,8 +94,32 @@ describe("portfolio content contract", () => {
       "utf8",
     );
 
-    expect(nginx).toContain("wjh_portfolio_access.log");
-    expect(nginx).toContain("wjh_portfolio_error.log");
+    expect(nginx).toContain(
+      "access_log /var/log/nginx/wjh_portfolio_access.log;",
+    );
+    expect(nginx).toContain(
+      "error_log /var/log/nginx/wjh_portfolio_error.log;",
+    );
+    expect(nginx).not.toContain("/www/server");
+    expect(nginx).not.toContain("/www/wwwlogs");
     expect(nginx).not.toContain("sub2api");
+  });
+
+  it("documents system Nginx and Certbot reload templates", async () => {
+    const mainNginx = await readFile(resolve("deploy/nginx.conf"), "utf8");
+    const reloadHook = await readFile(
+      resolve("deploy/reload-nginx.sh"),
+      "utf8",
+    );
+    const readme = await readFile(resolve("README.md"), "utf8");
+
+    expect(mainNginx).toContain("user nginx;");
+    expect(mainNginx).toContain("include /etc/nginx/conf.d/*.conf;");
+    expect(mainNginx).not.toContain("/www/server");
+    expect(reloadHook).toContain("/usr/sbin/nginx -t");
+    expect(reloadHook).toContain("systemctl reload nginx");
+    expect(readme).toContain("deploy/nginx.conf");
+    expect(readme).toContain("deploy/reload-nginx.sh");
+    expect(readme).toContain("sudo nginx -t");
   });
 });
