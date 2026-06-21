@@ -50,7 +50,7 @@ sudo /www/server/nginx/sbin/nginx -t
 sudo systemctl reload nginx
 ```
 
-配置保留 `/api/wechat/` 与 `/ordering-api/` 两个既有反向代理路由。
+生产 Nginx 仅提供静态作品集，不包含应用 API 或数据库服务。
 
 回滚时将 `current` 重新指向上一个版本；若同时修改过 Nginx，则恢复对应的
 `wjhdev.cloud.conf.backup-<timestamp>`，通过 `nginx -t` 后 reload。

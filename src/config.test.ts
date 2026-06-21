@@ -72,7 +72,7 @@ describe("portfolio content contract", () => {
     expect(footer).toContain("www.wjhdev.cloud");
   });
 
-  it("redirects only apex website traffic while preserving APIs", async () => {
+  it("serves only the portfolio without retired API proxies", async () => {
     const nginx = await readFile(
       resolve("deploy/nginx-wjhdev.cloud.conf"),
       "utf8",
@@ -81,11 +81,11 @@ describe("portfolio content contract", () => {
     expect(nginx).toContain(
       "return 301 https://www.wjhdev.cloud$request_uri;",
     );
-    expect(nginx).toContain("location /api/wechat/");
-    expect(nginx).toContain("location /ordering-api/");
-    expect(nginx.indexOf("location /api/wechat/")).toBeLessThan(
-      nginx.indexOf("if ($host = wjhdev.cloud)"),
-    );
+    expect(nginx).toContain("try_files $uri $uri/ =404;");
+    expect(nginx).not.toContain("/api/wechat/");
+    expect(nginx).not.toContain("/ordering-api/");
+    expect(nginx).not.toContain("127.0.0.1:18081");
+    expect(nginx).not.toContain("127.0.0.1:18083");
   });
 
   it("uses portfolio-specific Nginx log names", async () => {

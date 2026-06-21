@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [0.1.3] - 2026-06-21
+
+### Changed
+
+- Removed the retired WeChat authentication and ordering API reverse proxies
+  from production Nginx configuration.
+- Made unknown static-site paths return HTTP 404 instead of the homepage.
+
 ## [0.1.2] - 2026-06-21
 
 ### Changed
