@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [0.1.1] - 2026-06-21
+
+### Changed
+
+- Made `https://www.wjhdev.cloud` the canonical portfolio URL.
+- Added permanent apex-domain website redirects while preserving existing API
+  routes.
+
 ## [0.1.0] - 2026-06-21
 
 ### Added
