@@ -2,7 +2,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { chromium } = require("playwright");
 
-const baseUrl = "http://127.0.0.1:4321";
+const baseUrl = process.env.BASE_URL || "http://127.0.0.1:4321";
+const ignoreHTTPSErrors = process.env.IGNORE_HTTPS_ERRORS === "1";
 const screenshotDir = path.resolve("screenshots");
 fs.mkdirSync(screenshotDir, { recursive: true });
 
@@ -55,9 +56,14 @@ async function verifyPage(page, viewportName) {
   });
 }
 
+let browser;
+
 (async () => {
-  const browser = await chromium.launch({ channel: "chrome", headless: true });
-  const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  browser = await chromium.launch({ channel: "chrome", headless: true });
+  const desktop = await browser.newPage({
+    viewport: { width: 1440, height: 900 },
+    ignoreHTTPSErrors,
+  });
   await verifyPage(desktop, "desktop");
 
   await desktop.locator("#theme-toggle").click();
@@ -74,7 +80,10 @@ async function verifyPage(page, viewportName) {
   }
   await desktop.locator("#theme-toggle").click();
 
-  const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const mobile = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    ignoreHTTPSErrors,
+  });
   await verifyPage(mobile, "mobile");
 
   for (const asset of [
@@ -88,9 +97,10 @@ async function verifyPage(page, viewportName) {
     }
   }
 
-  await browser.close();
   console.log("Browser verification passed for desktop and mobile.");
 })().catch((error) => {
   console.error(error);
   process.exitCode = 1;
+}).finally(async () => {
+  await browser?.close();
 });
